@@ -1,0 +1,2 @@
+jp.co.futech.framework.env.config.BiEnvWebAutoConfiguration
+jp.co.futech.framework.env.config.BiEnvRpcAutoConfiguration

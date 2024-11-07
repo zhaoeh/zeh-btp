@@ -1,0 +1,2 @@
+jp.co.futech.framework.idempotent.config.BiIdempotentConfiguration
+jp.co.futech.framework.lock4j.config.BiLock4jConfiguration

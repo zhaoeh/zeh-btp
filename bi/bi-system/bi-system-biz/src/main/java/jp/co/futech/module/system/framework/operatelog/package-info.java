@@ -1,0 +1,1 @@
+package jp.co.futech.module.system.framework.operatelog;

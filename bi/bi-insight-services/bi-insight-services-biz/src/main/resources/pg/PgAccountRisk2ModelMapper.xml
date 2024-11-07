@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.futech.module.insight.mapper.pg.risk.PgAccountRisk2ModelMapper">
+
+    <select id="selectRisk2" parameterType="jp.co.futech.module.insight.po.req.risk.AccountRisk2ModelReq"
+            resultType="jp.co.futech.module.insight.po.res.risk.AccountRisk2ModelRes$UserAction">
+        select * from (
+        select dt,
+        login_name,
+        score,
+        users_features_str,
+        users_actions_str
+        from (
+        select dt,
+        login_name,
+        score_array[#{req.modelIndex}] as score,
+        JSONExtractArrayRaw(users_features_array[#{req.modelIndex}]) as users_features_arr,
+        arrayJoin(users_features_arr) as users_features_str,
+        JSONExtractArrayRaw(users_actions_array[#{req.modelIndex}]) as users_actions_arr,
+        arrayJoin(users_actions_arr) as users_actions_str
+        from t_daily_user_risk_model
+        <where>
+            <if test="req.loginName != null and req.loginName != ''">
+                and login_name = #{req.loginName}
+            </if>
+            <if test="req.dt != null and req.dt != ''">
+                and dt = #{req.dt}
+            </if>
+        </where>
+        )
+        <if test="req.orderFields != null and req.orderFields.size() == 1">
+            order by JSONExtractString(users_actions_str, #{req.orderFields[0].field})
+            <choose>
+                <when test="req.orderFields[0].order == 'desc'">
+                    desc
+                </when>
+                <otherwise>
+                    asc
+                </otherwise>
+            </choose>
+        </if>
+        <if test="req.orderFields != null and req.orderFields.size() > 1">
+            order by
+            <foreach collection="req.orderFields" item="orderItem" index="index" open="" separator="," close="">
+                JSONExtractString(users_actions_str, #{orderItem.field})
+                <choose>
+                    <when test="req.orderFields[0].order == 'desc'">
+                        desc
+                    </when>
+                    <otherwise>
+                        asc
+                    </otherwise>
+                </choose>
+            </foreach>
+        </if>
+        )
+    </select>
+
+    <select id="selectRisk2Features" parameterType="jp.co.futech.module.insight.po.req.risk.AccountRisk2ModelNewReq"
+            resultType="jp.co.futech.module.insight.po.res.risk.AccountRisk2ModelNewRes">
+        with t3 as (select loginname,max(window_end) as window_end
+        from ai_risk_control_withdrawal_features
+        <where>
+            <if test="req.loginName != null and req.loginName != ''">
+                loginname = #{req.loginName}
+            </if>
+        </where>
+        group by loginname)
+        select
+        t1.login_name as loginName,
+        t1.user_features as usersFeaturesStr,
+        t1.date as dt,
+        t2.window_start as windowStart,
+        t2.window_end as windowEnd,
+        t2.transDate as transDate,
+        t2.ts as ts,
+        t2.ipAddress as ipAddress,
+        t2.deviceId as deviceId,
+        t2.transIdCnt as transIdCnt,
+        t2.transCardCnt as transCardCnt,
+        t2.transCnt as transCnt,
+        t2.transAmt as transAmt
+        from ai_risk_control_user_features t1
+        left join ai_risk_control_withdrawal_features t2 on t1.login_name =t2.loginname
+        left join t3 on t3.loginname  = t2.loginname and t3.window_end=t2.window_end
+        <where>
+            <if test="req.loginName != null and req.loginName != ''">
+                and t1.login_name = #{req.loginName}
+            </if>
+            <if test="req.dt != null and req.dt != ''">
+                and t1.date = #{req.dt}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+    <select id="selectRisk2Actions" parameterType="jp.co.futech.module.insight.po.req.risk.AccountRisk2ModelNewReq"
+            resultType="jp.co.futech.module.insight.po.res.risk.AccountRisk2ModelNewRes$UserAction">
+        select
+        t.login_name as loginName,
+        t.user_name as userName,
+        t.billtime as billtime,
+        t.device_id as deviceId,
+        t.ip as ip,
+        t.game_name as gameName,
+        t.game_id as gameId,
+        t.bet_amount as betAmount,
+        t.win_amount as winAmount,
+        t.date as dt
+        from ai_risk_control_user_actions t
+        <where>
+            <if test="req.loginName != null and req.loginName != ''">
+                and t.login_name = #{req.loginName}
+            </if>
+            <if test="req.dt != null and req.dt != ''">
+                and t.date = #{req.dt}
+            </if>
+        </where>
+        <if test="req.orderFields != null and req.orderFields.size() == 1">
+            order by t.${req.orderFields[0].field}
+            <choose>
+                <when test="req.orderFields[0].order == 'desc'">
+                    desc
+                </when>
+                <otherwise>
+                    asc
+                </otherwise>
+            </choose>
+        </if>
+        <if test="req.orderFields != null and req.orderFields.size() > 1">
+            order by
+            <foreach collection="req.orderFields" item="orderItem" index="index" open="" separator="," close="">
+                t.${orderItem.field}
+                <choose>
+                    <when test="req.orderFields[0].order == 'desc'">
+                        desc
+                    </when>
+                    <otherwise>
+                        asc
+                    </otherwise>
+                </choose>
+            </foreach>
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationContextInitializer=\
+jp.co.futech.framework.rpc.config.InitLocalFeignConfiguration

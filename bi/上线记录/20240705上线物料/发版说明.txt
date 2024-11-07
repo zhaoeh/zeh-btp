@@ -1,0 +1,17 @@
+版本信息：
+bi-gateway:1.0.240
+bi-infra:1.0.240
+bi-system:1.0.240
+bi-insight-services:1.0.240
+
+请注意：
+bi-insight-services服务为本次新增的一个微服务，需要创建。
+其对应的nacos文件为：
+20240705上线物料\nacos\新增\bi-insight-services.yaml
+
+其他存量微服务nacos修改：
+20240705上线物料\nacos\修改\bi-gateway.yaml
+20240705上线物料\nacos\修改\bi-system.yaml
+其中，修改部分规则如下：
+以"====修改开始"作为修改开始前缀注释，以"====修改结束"作为修改结束后缀注释，包裹的内容需要添加，请确保节点顺序保持yml规则。
+添加完成后，请删除"====修改开始"与"====修改结束"注释语！！！

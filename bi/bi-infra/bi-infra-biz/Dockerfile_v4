@@ -1,0 +1,9 @@
+FROM reg.futech.co.jp/docker.io/openjdk:17-oracle
+MAINTAINER "Ayden Franklin"<ayden@futech.co.jp>
+RUN groupadd  -g 1001 app && useradd -u 1001 -g app -s /sbin/nologin -c "Container user for application" app
+USER app
+ENV JAVA_OPTS="-Xms512m -Xmx512m"
+EXPOSE 8082
+ADD bi-infra-biz.jar app.jar
+CMD java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar app.jar
+

@@ -1,0 +1,16 @@
+## mybatis plus 双数据源
+#spring:
+#  datasource:
+#    dynamic:
+#      enabled: false
+#    primary:
+#      url: jdbc:mysql://10.48.37.47:4311/futech_bi?useSSL=false&autoReconnect=true&characterEncoding=utf8
+#      username: uat_futech_bi_rw
+#      password: TxWLBs0pOP1NgwFZTFHsNPt7b0vmZvYVYou
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#    second:
+#      url: jdbc:bytehouse://gateway.aws-ap-southeast-1.bytehouse.cloud:19000/dp_dw?secure=true
+#      username: bytehouse
+#      password: nzz4Mu83XO:PSn5VibKA5
+#      driver-class-name: com.bytedance.bytehouse.jdbc.ByteHouseDriver
+#      poolName: BI-Pool

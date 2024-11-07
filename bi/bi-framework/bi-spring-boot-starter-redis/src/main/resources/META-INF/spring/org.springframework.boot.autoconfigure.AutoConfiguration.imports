@@ -1,0 +1,2 @@
+jp.co.futech.framework.redis.config.BiRedisAutoConfiguration
+jp.co.futech.framework.redis.config.BiCacheAutoConfiguration

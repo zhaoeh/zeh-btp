@@ -1,0 +1,417 @@
+image: reg.futech.co.jp/docker.io/docker:latest
+stages:
+  - build
+  - deploy
+  - distribute
+  - sonarqube
+
+#sonarqube_job:
+#  stage: sonarqube
+#  variables:
+#    GIT_STRATEGY: clone
+#    GIT_DEPTH: 0
+#  script:
+#    - mvn clean test
+#    - echo 'sonarqube start!'
+#    - echo $GITLAB_USER_EMAIL
+#    - echo $CI_PROJECT_NAME
+#    - echo $CI_COMMIT_REF_NAME
+#    - mvn clean --batch-mode verify sonar:sonar -Dsonar.host.url=http://10.54.167.82:9000 -Dsonar.login=sqa_8883b009d6a5254cb70d7bb47bc069e9b19ccf40 -Dsonar.projectName=$CI_PROJECT_NAME -Dsonar.projectKey=$CI_PROJECT_NAME -Dsonar.branchName=$CI_COMMIT_REF_NAME -Dsonar.language=java -Dsonar.java.binaries=. -Dsonar.scm.provider=git
+#  tags:
+#    - build
+#  when: always
+
+bi-gateway-build:
+  stage: build
+  tags:
+    - build
+  only:
+    refs:
+      - uat
+      - develop
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-gateway/**/*
+  variables:
+    GIT_STRATEGY: clone
+    CI_PROJECT_NAME_SUFFIX: -dev
+  script:
+    - docker login -u robot-robot-ft-dev-sre -p 'XEbEcaq2Tjt4rmf3xiPBgS4U2Mac2BoQ' reg.futech.co.jp
+    - mvn clean package -Dmaven.test.skip=true -pl jp.co.futech:bi-infra-biz,jp.co.futech:bi-gateway,jp.co.futech:bi-system-biz,jp.co.futech:bi-insight-services-biz -am
+    - cp bi-gateway/Dockerfile_v4 bi-gateway/target/Dockerfile
+    - cd bi-gateway/target
+    - docker build -t reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID .
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-gateway:1.0.$CI_PIPELINE_IID
+    - echo "naming to reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-gateway:1.0.$CI_PIPELINE_IID 0.0s done"
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-gateway:1.0.$CI_PIPELINE_IID
+bi-infra-build:
+  stage: build
+  tags:
+    - build
+  only:
+    refs:
+      - uat
+      - develop
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-infra/**/*
+  variables:
+    GIT_STRATEGY: clone
+    CI_PROJECT_NAME_SUFFIX: -dev
+  script:
+    - docker login -u robot-robot-ft-dev-sre -p 'XEbEcaq2Tjt4rmf3xiPBgS4U2Mac2BoQ' reg.futech.co.jp
+    - mvn clean package -Dmaven.test.skip=true -pl jp.co.futech:bi-infra-biz,jp.co.futech:bi-gateway,jp.co.futech:bi-system-biz,jp.co.futech:bi-insight-services-biz -am
+    - cp bi-infra/bi-infra-biz/Dockerfile_v4 bi-infra/bi-infra-biz/target/Dockerfile
+    - cd bi-infra/bi-infra-biz/target
+    - docker build -t reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID .
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-infra:1.0.$CI_PIPELINE_IID
+    - echo "naming to reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-infra:1.0.$CI_PIPELINE_IID 0.0s done"
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-infra:1.0.$CI_PIPELINE_IID
+bi-system-build:
+  stage: build
+  tags:
+    - build
+  only:
+    refs:
+      - uat
+      - develop
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-system/**/*
+  variables:
+    GIT_STRATEGY: clone
+    CI_PROJECT_NAME_SUFFIX: -dev
+  script:
+    - docker login -u robot-robot-ft-dev-sre -p 'XEbEcaq2Tjt4rmf3xiPBgS4U2Mac2BoQ' reg.futech.co.jp
+    - mvn clean package -Dmaven.test.skip=true -pl jp.co.futech:bi-infra-biz,jp.co.futech:bi-gateway,jp.co.futech:bi-system-biz,jp.co.futech:bi-insight-services-biz -am
+    - cp bi-system/bi-system-biz/Dockerfile_v4 bi-system/bi-system-biz/target/Dockerfile
+    - cd bi-system/bi-system-biz/target
+    - docker build -t reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID .
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-system:1.0.$CI_PIPELINE_IID
+    - echo "naming to reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-system:1.0.$CI_PIPELINE_IID 0.0s done"
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-system:1.0.$CI_PIPELINE_IID
+bi-insight-services-build:
+  stage: build
+  tags:
+    - build
+  only:
+    refs:
+      - uat
+      - develop
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-insight-services/**/*
+  variables:
+    GIT_STRATEGY: clone
+    CI_PROJECT_NAME_SUFFIX: -dev
+  script:
+    - docker login -u robot-robot-ft-dev-sre -p 'XEbEcaq2Tjt4rmf3xiPBgS4U2Mac2BoQ' reg.futech.co.jp
+    - mvn clean package -Dmaven.test.skip=true -pl jp.co.futech:bi-infra-biz,jp.co.futech:bi-gateway,jp.co.futech:bi-system-biz,jp.co.futech:bi-insight-services-biz -am
+    - cp bi-insight-services/bi-insight-services-biz/Dockerfile_v4 bi-insight-services/bi-insight-services-biz/target/Dockerfile
+    - cd bi-insight-services/bi-insight-services-biz/target
+    - docker build -t reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID .
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-insight-services:1.0.$CI_PIPELINE_IID
+    - echo "naming to reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-insight-services:1.0.$CI_PIPELINE_IID 0.0s done"
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-insight-services:1.0.$CI_PIPELINE_IID
+manual-build-all:
+  stage: build
+  tags:
+    - build
+  when: manual
+  only:
+    - uat
+    - develop
+    - /^dev-deploy\/.*$/
+  variables:
+    GIT_STRATEGY: clone
+    CI_PROJECT_NAME_SUFFIX: -dev
+  script:
+    - docker login -u robot-robot-ft-dev-sre -p 'XEbEcaq2Tjt4rmf3xiPBgS4U2Mac2BoQ' reg.futech.co.jp
+    - mvn clean package -Dmaven.test.skip=true -pl jp.co.futech:bi-infra-biz,jp.co.futech:bi-gateway,jp.co.futech:bi-system-biz,jp.co.futech:bi-insight-services-biz -am
+    - cp bi-gateway/Dockerfile_v4 bi-gateway/target/Dockerfile
+    - cd bi-gateway/target
+    - docker build -t reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID .
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID
+    - cd ../../
+    - cp bi-infra/bi-infra-biz/Dockerfile_v4 bi-infra/bi-infra-biz/target/Dockerfile
+    - cd bi-infra/bi-infra-biz/target
+    - docker build -t reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID .
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID
+    - cd ../../../
+    - cp bi-system/bi-system-biz/Dockerfile_v4 bi-system/bi-system-biz/target/Dockerfile
+    - cd bi-system/bi-system-biz/target
+    - docker build -t reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID .
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID
+    - cd ../../../
+    - cp bi-insight-services/bi-insight-services-biz/Dockerfile_v4 bi-insight-services/bi-insight-services-biz/target/Dockerfile
+    - cd bi-insight-services/bi-insight-services-biz/target
+    - docker build -t reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID .
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-gateway:1.0.$CI_PIPELINE_IID
+    - echo "naming to reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-gateway:1.0.$CI_PIPELINE_IID 0.0s done"
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-gateway:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-infra:1.0.$CI_PIPELINE_IID
+    - echo "naming to reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-infra:1.0.$CI_PIPELINE_IID 0.0s done"
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-infra:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-system:1.0.$CI_PIPELINE_IID
+    - echo "naming to reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-system:1.0.$CI_PIPELINE_IID 0.0s done"
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-system:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-insight-services:1.0.$CI_PIPELINE_IID
+    - echo "naming to reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-insight-services:1.0.$CI_PIPELINE_IID 0.0s done"
+    - docker push reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME$CI_PROJECT_NAME_SUFFIX/bi-insight-services:1.0.$CI_PIPELINE_IID
+bi-gateway-deploy:
+  stage: deploy
+  tags:
+    - build
+  only:
+    refs:
+      - develop
+    changes:
+      - bi-gateway/**/*
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-gateway\"}}"
+manual-bi-gateway-deploy:
+  stage: deploy
+  tags:
+    - build
+  when: manual
+  only:
+    refs:
+      - uat
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-gateway/**/*
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-gateway\"}}"
+bi-infra-deploy:
+  stage: deploy
+  tags:
+    - build
+  only:
+    refs:
+      - develop
+    changes:
+      - bi-infra/**/*
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-infra\"}}"
+manual-bi-infra-deploy:
+  stage: deploy
+  tags:
+    - build
+  when: manual
+  only:
+    refs:
+      - uat
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-infra/**/*
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-infra\"}}"
+bi-system-deploy:
+  stage: deploy
+  tags:
+    - build
+  only:
+    refs:
+      - develop
+    changes:
+      - bi-system/**/*
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-system\"}}"
+manual-bi-system-deploy:
+  stage: deploy
+  tags:
+    - build
+  when: manual
+  only:
+    refs:
+      - uat
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-system/**/*
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-system\"}}"
+bi-insight-services-deploy:
+  stage: deploy
+  tags:
+    - build
+  only:
+    refs:
+      - develop
+    changes:
+      - bi-insight-services/**/*
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-insight-services\"}}"
+manual-bi-insight-services-deploy:
+  stage: deploy
+  tags:
+    - build
+  when: manual
+  only:
+    refs:
+      - uat
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-insight-services/**/*
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-insight-services\"}}"
+manual-deploy-all:
+  stage: deploy
+  tags:
+    - build
+  when: manual
+  only:
+    - uat
+    - develop
+    - /^dev-deploy\/.*$/
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - echo "Deploy this application to the remote server."
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-gateway\"}}"
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-infra\"}}"
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-system\"}}"
+    - |
+      curl https://spin-gate-dev.futech.co.jp/webhooks/webhook/insight-dev -X POST -H "content-type: application/json" -d "{\"parameters\":{\"tag\":\"1.0.$CI_PIPELINE_IID\",\"module\":\"bi-insight-services\"}}"
+bi-gateway-distribute:
+  stage: distribute
+  tags:
+    - build
+  when: manual
+  only:
+    refs:
+      - uat
+      - develop
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-gateway/**/*
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID
+    - docker push reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID
+bi-infra-distribute:
+  stage: distribute
+  tags:
+    - build
+  when: manual
+  only:
+    refs:
+      - uat
+      - develop
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-infra/**/*
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID
+    - docker push reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID
+bi-system-distribute:
+  stage: distribute
+  tags:
+    - build
+  when: manual
+  only:
+    refs:
+      - uat
+      - develop
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-system/**/*
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID
+    - docker push reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID
+bi-insight-services-distribute:
+  stage: distribute
+  tags:
+    - build
+  when: manual
+  only:
+    refs:
+      - uat
+      - develop
+      - /^dev-deploy\/.*$/
+    changes:
+      - bi-insight-services/**/*
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID
+    - docker push reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID
+manual-distribute-all:
+  stage: distribute
+  tags:
+    - build
+  when: manual
+  only:
+    - uat
+    - develop
+    - /^dev-deploy\/.*$/
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID
+    - docker push reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-gateway:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID
+    - docker push reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-infra:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID
+    - docker push reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-system:1.0.$CI_PIPELINE_IID
+    - docker tag reg.futech.co.jp/ft-dev/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID
+    - docker push reg.futech.co.jp/dp/$CI_PROJECT_NAME/bi-insight-services:1.0.$CI_PIPELINE_IID
+
+sonarqube-check:
+  stage: sonarqube
+  tags:
+    - build
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script:
+    - mvn verify -Dmaven.test.skip=true sonar:sonar  -Dsonar.projectKey=bi-insight-backend-admin
+  allow_failure: true

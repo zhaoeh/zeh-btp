@@ -1,0 +1,3 @@
+jp.co.futech.framework.mq.redis.config.BiRedisMQProducerAutoConfiguration
+jp.co.futech.framework.mq.redis.config.BiRedisMQConsumerAutoConfiguration
+jp.co.futech.framework.mq.rabbitmq.config.BiRabbitMQAutoConfiguration

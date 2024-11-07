@@ -1,0 +1,2 @@
+jp.co.futech.framework.tracer.config.BiTracerAutoConfiguration
+jp.co.futech.framework.tracer.config.BiMetricsAutoConfiguration

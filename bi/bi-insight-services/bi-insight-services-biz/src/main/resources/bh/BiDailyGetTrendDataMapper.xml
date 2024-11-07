@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.futech.module.insight.mapper.bh.anomaly.BiDailyGetTrendDataMapper">
+
+    <select id="selectTrendDataForListByXml" parameterType="jp.co.futech.module.insight.po.req.anomaly.AnomalyGetTrendDataReq"
+            resultType="jp.co.futech.module.insight.po.res.anomaly.AnomalyGetTrendDataRes$TrendData">
+        select
+        date_trend as dt,
+        site_id_trend as siteId,
+        platform_trend as platform,
+        gamekind_trend as gamekind,
+        value_trend as valueTrend,
+        index_trend as indexTrend,
+        dimension_trend as dimensionTrend ,
+        sub_items_trend as subItemsTrend,
+        site_trend as siteTrend
+        from t_bi_daily_get_trend_data t
+        <where>
+            <if test="req.metric != null and req.metric != ''">
+                and t.metric_trend = #{req.metric}
+            </if>
+            <if test="req.index != null and req.index != ''">
+                and t.index_input_trend = #{req.index}
+            </if>
+            <if test="req.startDate != null and req.startDate != ''">
+                and t.date_trend &gt;= #{req.startDate}
+            </if>
+            <if test="req.endDate != null and req.endDate != ''">
+                and t.date_trend &lt;= #{req.endDate}
+            </if>
+            <if test="req.dimensionStr != null and req.dimensionStr != ''">
+                and t.dimension_trend = #{req.dimensionStr}
+            </if>
+            <if test="req.subItemsStr != null and req.subItemsStr != ''">
+                and t.sub_items_trend = #{req.subItemsStr}
+            </if>
+            <if test="req.site != null and req.site != ''">
+                and t.site_trend = #{req.site}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectTrendDataForListByMapper"
+            resultType="jp.co.futech.module.insight.po.res.anomaly.AnomalyGetTrendDataRes$TrendData">
+        select
+        t.dt,
+        t.site_id as siteId,
+        t.platform,
+        t.gamekind,
+        t.${sqlName.queryField} as valueTrend,
+        #{sqlName.resultField} as indexTrend
+        from
+        t_bi_daily_ggr_main_lvl_site t
+        <where>
+            <if test="req.startDate != null and req.startDate != ''">
+                and t.dt &gt;= #{req.startDate}
+            </if>
+            <if test="req.endDate != null and req.endDate != ''">
+                and t.dt &lt;= #{req.endDate}
+            </if>
+            <if test="req.platform != null">
+                and t.platform = #{req.platform}
+            </if>
+            <if test="req.gamekind != null">
+                and t.gamekind = #{req.gamekind}
+            </if>
+            <if test="req.siteId != null and req.siteId != ''">
+                and t.site_id = #{req.siteId}
+            </if>
+        </where>
+        order by t.dt
+    </select>
+
+    <select id="selectAnomalDataForListByXml" parameterType="jp.co.futech.module.insight.po.req.anomaly.AnomalyGetTrendDataReq"
+            resultType="jp.co.futech.module.insight.po.res.anomaly.AnomalyGetTrendDataRes$AnomalData">
+        select distinct
+        metric_anomal as metric,
+        site_anomal as site,
+        date_anomal as dateAnomal,
+        dimension_anomal as dimension,
+        sub_dimension_anomal as subDimensionAnomal,
+        ggr_anomal as ggrAnomal,
+        detetion_time_anomal as detetionTimeAnomal ,
+        severity_anomal as severityAnomal,
+        rate_anomal as rateAnomal,
+        anomaly_describe_anomal as anomalyDescribeAnomal,
+        cause_analysis_anomal as causeAnalysisAnomal,
+        detail_anomal as detailAnomal,
+        dimension_rate_anomal as dimensionRateAnomal,
+        update_dt as updateDate
+        from t_bi_daily_get_trend_data t
+        <where>
+            <if test="req.startDate != null and req.startDate != ''">
+                and t.date_anomal &gt;= #{req.startDate}
+            </if>
+            <if test="req.endDate != null and req.endDate != ''">
+                and t.date_anomal &lt;= #{req.endDate}
+            </if>
+            <if test="req.site != null and req.site != ''">
+                and t.site_anomal = #{req.site}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectAnomalDataForListByMapper"
+            parameterType="jp.co.futech.module.insight.po.req.anomaly.AnomalyGetTrendDataReq"
+            resultType="jp.co.futech.module.insight.po.res.anomaly.AnomalyGetTrendDataRes$AnomalData">
+        select
+        metric,
+        site,
+        dt as dateAnomal,
+        dimension,
+        sub_dimension as subDimensionAnomal,
+        ggr as ggrAnomal,
+        detetion_time as detetionTimeAnomal ,
+        severity as severityAnomal,
+        rate as rateAnomal,
+        anomaly_describe as anomalyDescribeAnomal,
+        cause_analysis as causeAnalysisAnomal,
+        detail as detailAnomal,
+        anomaly_info as anomalyInfo
+        from t_bi_anomal_dot t
+        <where>
+            <if test="req.metric != null and req.metric != ''">
+                and t.metric = #{req.metric}
+            </if>
+            <if test="req.site != null and req.site != ''">
+                and t.site = #{req.site}
+            </if>
+            <if test="req.anomalDt != null and req.anomalDt != ''">
+                and t.dt = #{req.anomalDt}
+            </if>
+        </where>
+        order by t.dt
+    </select>
+</mapper>

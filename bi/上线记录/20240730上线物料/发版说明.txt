@@ -1,0 +1,30 @@
+1.版本信息：
+后端服务：
+bi-gateway:1.0.335
+bi-infra:1.0.335
+bi-system:1.0.335
+bi-insight-services:1.0.335
+
+前端服务：
+bi-insight-front:337
+
+2.上述四个服务启动顺应严格按照如下执行：
+(1)bi-gateway
+(2)bi-system
+(3)bi-infra
+(4)bi-insight-services
+
+3.修改nacos配置：
+bi-insight-services.yaml
+bi-system.yaml
+其中，修改部分规则如下：
+(1) 以"### 修改配置开始-新增 ###"作为修改开始前缀注释，以"### 修改配置结束 ###"作为修改结束后缀注释，包裹的内容需要添加，请确保节点顺序保持yml规则。
+添加完成后，请删除"### 修改配置开始-新增 ###"与"### 修改配置结束 ###"注释语！！！
+(2) bi-system.yaml文件中，新增的配置
+  message:
+    enable: true
+待服务启动完毕后，请修改为false
+
+4.sql脚本
+执行 add_i18n.sql
+

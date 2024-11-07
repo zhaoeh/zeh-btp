@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    nacos:
+      server-addr: ${NACOS_SERVER_ADDR:http://nacos.ft-dev.local:8848}
+      discovery:
+        namespace: ${NACOS_NAMESPACE:f0f4437b-43e4-4955-b4ba-23ddddaf91fc} # 命名空间。这里使用 dev 开发环境
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:nacos}
+      config:
+        namespace: ${NACOS_NAMESPACE:f0f4437b-43e4-4955-b4ba-23ddddaf91fc} # 命名空间。这里使用 dev 开发环境
+        file-extension: yaml # 使用的 Nacos 配置集的 dataId 的文件拓展名，同时也是 Nacos 配置集的配置格式，默认为 properties
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:nacos}
+        extension-configs:
+          - data-id: ${NACOS_DATASOURCE:bi-i18n-resources.yaml}
+            group: DEFAULT_GROUP
+            refresh: true
+  application:
+    name: ${NACOS_DATA_ID:bi-insight-services}
+  main:
+    allow-circular-references: true # 允许循环依赖，因为项目是三层架构，无法避免这个情况。
+    allow-bean-definition-overriding: true # 允许 Bean 覆盖，例如说 Feign 等会存在重复定义的服务
+server:
+  port: 8084
+event:
+  task:
+    airflowURL: http://10.54.168.172:5000/launch/task
+    bh_database: ddl_test.
+    pg_database: indicator_test.public.
+    pg_report_database: indicator_test.public.
+    spset_username: tachi_dev
+    spset_password: tachi_dev
+    spset_database_id: 5
+    spset_schema: public
+    spset_url: https://superset-dev.gowin.cloud

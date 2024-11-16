@@ -1,7 +1,7 @@
-# FT Backend Turbo Pack(ft-btp)
+# ZEH Backend Turbo Pack(zeh-btp)
 
 ## 简介
-ft-btp 组件包是一个通用的后端功能增强包，与业务解耦，采用springboot starter实现。
+zeh-btp 组件包是一个通用的后端功能增强包，与业务解耦，采用springboot starter实现。
 核心目的是为业务侧提供一些通用的能力。
 
 ## 主要特性
@@ -26,7 +26,7 @@ ft-btp 组件包是一个通用的后端功能增强包，与业务解耦，采�
 ```xml
 <dependency>
     <groupId>com.ft.btp</groupId>
-    <artifactId>ft-btp-common</artifactId>
+    <artifactId>zeh-btp-common</artifactId>
     <version>3.0.3</version>
 </dependency>
 ```

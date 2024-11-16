@@ -1,8 +1,0 @@
-jp.co.futech.framework.apilog.config.BiApiLogAutoConfiguration
-jp.co.futech.framework.jackson.config.BiJacksonAutoConfiguration
-jp.co.futech.framework.swagger.config.BiSwaggerAutoConfiguration
-jp.co.futech.framework.web.config.BiWebAutoConfiguration
-jp.co.futech.framework.apilog.config.BiApiLogRpcAutoConfiguration
-jp.co.futech.framework.banner.config.BiBannerAutoConfiguration
-jp.co.futech.framework.errorcode.config.BiErrorCodeRpcAutoConfiguration
-jp.co.futech.framework.errorcode.config.BiErrorCodeAutoConfiguration

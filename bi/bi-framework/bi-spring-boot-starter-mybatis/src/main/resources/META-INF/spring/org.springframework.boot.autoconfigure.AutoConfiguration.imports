@@ -1,3 +1,0 @@
-jp.co.futech.framework.datasource.config.BiDataSourceAutoConfiguration
-jp.co.futech.framework.mybatis.config.BiMybatisAutoConfiguration
-jp.co.futech.framework.mybatis.config.MybatisLogConfiguration

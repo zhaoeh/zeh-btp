@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationContextInitializer=\
+zeh.btp.simple.core.LocalConfigPriorityConfiguration

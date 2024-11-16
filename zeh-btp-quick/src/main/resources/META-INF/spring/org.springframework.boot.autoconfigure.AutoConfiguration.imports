@@ -1,0 +1,12 @@
+ft.btp.i18n.config.I18nAutoConfiguration
+ft.btp.i18n.config.I18nLocaleAutoConfiguration
+ft.btp.i18n.config.I18nComponentAutoConfiguration
+ft.btp.i18n.config.I18nProcessorAutoConfiguration
+ft.btp.i18n.config.I18nAopAutoConfiguration
+ft.btp.i18n.config.I18nHookAutoConfiguration
+ft.btp.mfa.config.ConditionalConfig
+ft.btp.validation.config.CustomizeValidationAutoConfiguration
+ft.btp.simple.config.DistributedLockAutoConfiguration
+ft.btp.simple.config.HtmlEscapeAutoConfiguration
+ft.btp.simple.config.RequestLimitAutoConfiguration
+ft.btp.scope.config.CustomizedRefreshScopeAutoConfiguration

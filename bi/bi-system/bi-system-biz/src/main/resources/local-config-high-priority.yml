@@ -1,9 +1,0 @@
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-bi:
-  message:
-    enable: false
-xxl:
-  job:
-    enabled: false

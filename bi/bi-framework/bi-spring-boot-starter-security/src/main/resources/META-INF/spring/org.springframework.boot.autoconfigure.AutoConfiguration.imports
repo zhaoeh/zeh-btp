@@ -1,5 +1,0 @@
-jp.co.futech.framework.security.config.BiSecurityRpcAutoConfiguration
-jp.co.futech.framework.security.config.BiSecurityAutoConfiguration
-jp.co.futech.framework.security.config.BiWebSecurityConfigurerAdapter
-jp.co.futech.framework.operatelog.config.BiOperateLogV2Configuration
-jp.co.futech.framework.operatelog.config.BiOperateLogV2RpcAutoConfiguration

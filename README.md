@@ -34,3 +34,7 @@ zeh-btp 组件包是一个通用的后端功能增强包，与业务解耦，采
 比如实现 zeh.btp.i18n.core.I18nMessagesProvider 接口，即可使用国际化能力。   
 实现 zeh.btp.mfa.MfaProcess 接口，即可使用mfa二次认证能力。   
 实现 zeh.btp.scope.hook.BeanScopeManager 接口，即可使用 bean 生命周期管理能力。   
+
+
+## 子包分类
+zeh-btp-quick ： 与springboot版本解耦，提供一些常见的通用组件处理器

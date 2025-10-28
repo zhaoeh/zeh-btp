@@ -12,9 +12,9 @@
     </parent>
 
 
-    <groupId>com.snowflake</groupId>
+    <groupId>com.zeh</groupId>
     <artifactId>zeh-security-starter</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>dev-1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>zeh-security-starter</name>
 

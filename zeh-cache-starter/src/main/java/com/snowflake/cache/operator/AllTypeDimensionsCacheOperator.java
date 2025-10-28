@@ -1,7 +1,15 @@
 package com.snowflake.cache.operator;
 
 import com.alicp.jetcache.Cache;
+import com.snowflake.cache.key.tuple.LotteryPlayKeyTuple;
 import com.snowflake.cache.view.play.AllPlayView;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class AllTypeDimensionsCacheOperator {
 
@@ -33,5 +41,27 @@ public class AllTypeDimensionsCacheOperator {
      */
     public AllPlayView queryAllLotteryType() {
         return allPlayViewCache.get("DIMENSIONS");
+    }
+
+    /**
+     * 获取全量玩法五元组key对应的配置编码映射
+     * @return
+     */
+    public Map<String, String> queryAllLotteryTypeMappingWithTuple5() {
+        AllPlayView allPlayView = queryAllLotteryType();
+        if (Objects.isNull(allPlayView)) {
+            return Collections.emptyMap();
+        }
+        Map<String, LotteryPlayKeyTuple> tuple5ConfigMapping = allPlayView.getBase();
+        if (CollectionUtils.isEmpty(tuple5ConfigMapping)) {
+            return Collections.emptyMap();
+        }
+        Map<String, String> result = new HashMap<>();
+        tuple5ConfigMapping.forEach((k, v) -> {
+            if (StringUtils.isNotBlank(k) && Objects.nonNull(v) && StringUtils.isNotBlank(v.getId())) {
+                result.put(k, v.getId());
+            }
+        });
+        return result;
     }
 }

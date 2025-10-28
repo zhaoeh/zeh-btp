@@ -116,7 +116,7 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.snowflake</groupId>
+            <groupId>com.zeh</groupId>
             <artifactId>zeh-assistant-core</artifactId>
             <version>dev-0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

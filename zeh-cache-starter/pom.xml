@@ -11,10 +11,9 @@
         <relativePath/>
     </parent>
 
-
-    <groupId>com.snowflake</groupId>
+    <groupId>com.zeh</groupId>
     <artifactId>zeh-cache-starter</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>dev-1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>zeh-cache-starter</name>
 

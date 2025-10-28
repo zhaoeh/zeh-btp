@@ -1,0 +1,2 @@
+com.snowflake.config.SecurityComponentAutoConfig
+com.snowflake.config.CommonWebSecurityAutoConfig

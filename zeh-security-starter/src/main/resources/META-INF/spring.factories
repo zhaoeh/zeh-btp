@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.snowflake.config.SecurityComponentAutoConfig,\
+com.snowflake.config.CommonWebSecurityAutoConfig

@@ -1,0 +1,3 @@
+com.snowflake.cache.config.CacheComponentAutoConfiguration
+com.snowflake.cache.config.CacheInstanceAutoConfiguration
+com.snowflake.cache.config.CacheAutoConfiguration

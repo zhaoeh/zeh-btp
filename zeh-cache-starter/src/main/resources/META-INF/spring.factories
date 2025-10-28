@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.snowflake.cache.config.CacheComponentAutoConfiguration,\
+com.snowflake.cache.config.CacheInstanceAutoConfiguration,\
+com.snowflake.cache.config.CacheAutoConfiguration

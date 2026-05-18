@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: 依赖校验管理注解
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-02
  **/
 @Target({ElementType.TYPE})

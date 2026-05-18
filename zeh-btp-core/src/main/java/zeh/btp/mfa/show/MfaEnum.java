@@ -2,7 +2,7 @@ package zeh.btp.mfa.show;
 
 /**
  * @description: mfa status enum
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-05-31
  **/
 public enum MfaEnum {

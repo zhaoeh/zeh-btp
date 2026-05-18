@@ -25,7 +25,7 @@ import java.util.stream.Stream;
 
 /**
  * @description: SpEL校验器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-24
  **/
 public class SpELValidator implements ConstraintValidator<SpELValid, Object> {

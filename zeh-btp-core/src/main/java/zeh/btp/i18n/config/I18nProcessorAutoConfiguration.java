@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * @description: 国际化处理器自动配置类
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-07
  **/
 @AutoConfiguration

@@ -2,7 +2,7 @@ package zeh.btp.common;
 
 /**
  * @description:
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-04
  **/
 public class CommonConstants {

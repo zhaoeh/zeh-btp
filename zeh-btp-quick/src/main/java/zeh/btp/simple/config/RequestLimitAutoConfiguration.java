@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @description: 钩子自动配置
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-08
  **/
 @AutoConfiguration

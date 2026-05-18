@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 /**
  * @program: riskcontrol-common
  * @description: 包装Consumer函数式接口
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-10-30 14:38
  */
 public class ConsumerHelper {

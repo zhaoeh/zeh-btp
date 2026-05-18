@@ -7,7 +7,7 @@ import java.util.Locale;
 
 /**
  * @description: i18n国际化消息帮助器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-04
  **/
 public class I18nMessageHelper {

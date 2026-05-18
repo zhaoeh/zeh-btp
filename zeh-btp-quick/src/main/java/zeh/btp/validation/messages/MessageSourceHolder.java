@@ -6,7 +6,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 
 /**
  * @description: messageSource持有器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-08
  **/
 public class MessageSourceHolder implements MessageSourceAware {

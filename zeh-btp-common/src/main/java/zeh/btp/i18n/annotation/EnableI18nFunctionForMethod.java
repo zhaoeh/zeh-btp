@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: 注解，标识于method上，用于表示一个方法开启国际化功能
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-11
  **/
 @Documented

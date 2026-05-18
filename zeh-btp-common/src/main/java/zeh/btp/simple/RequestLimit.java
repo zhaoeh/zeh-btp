@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: api流量限制注解
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-19
  */
 @Target({ElementType.METHOD})

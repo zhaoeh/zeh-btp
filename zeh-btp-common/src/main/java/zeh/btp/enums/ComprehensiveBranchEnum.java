@@ -2,7 +2,7 @@ package zeh.btp.enums;
 
 /**
  * @description: 综合门店枚举
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-04-16
  **/
 public enum ComprehensiveBranchEnum {

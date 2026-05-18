@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @description: 定时刷新对象作用域
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-20
  **/
 public class CustomizedRefreshScopeProcessor implements Scope {

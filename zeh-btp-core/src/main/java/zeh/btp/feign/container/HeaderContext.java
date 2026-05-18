@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @description: 自定义header上下文容器，用户存储header头信息
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-10-30 10:09
  */
 public class HeaderContext extends ConcurrentHashMap<String, String> {

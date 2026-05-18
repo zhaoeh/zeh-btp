@@ -12,7 +12,7 @@ import java.util.Objects;
 
 /**
  * @description: BeanScopeManager 管理器收集策略
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-21
  **/
 public class CustomizedRefreshScopePostProcessor implements BeanPostProcessor, BeanFactoryAware {

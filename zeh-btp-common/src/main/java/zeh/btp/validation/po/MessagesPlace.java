@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * @description: 自定义message实体
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-08
  **/
 @Builder

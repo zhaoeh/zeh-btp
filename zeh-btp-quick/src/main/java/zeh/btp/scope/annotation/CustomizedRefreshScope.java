@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: 自定义的bean作用域注解
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-20
  **/
 @Documented

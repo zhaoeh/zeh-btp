@@ -12,7 +12,7 @@ import java.util.Objects;
 
 /**
  * @description: 校验 @Range
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-02
  **/
 public class RangeValidator {

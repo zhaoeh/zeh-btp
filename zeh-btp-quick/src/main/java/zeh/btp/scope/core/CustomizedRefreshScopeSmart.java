@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * @description:
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-26
  **/
 public class CustomizedRefreshScopeSmart implements SmartInitializingSingleton, BeanFactoryAware, ApplicationContextAware, ApplicationEventPublisherAware {

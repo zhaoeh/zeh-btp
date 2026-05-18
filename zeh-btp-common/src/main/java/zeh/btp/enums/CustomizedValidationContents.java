@@ -4,7 +4,7 @@ import zeh.btp.constants.EnumValidContents;
 
 /**
  * @description: 校验注解对应的枚举容器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-12-30
  **/
 public enum CustomizedValidationContents {

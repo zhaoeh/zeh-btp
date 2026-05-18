@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 /**
  * @description: BeanScopeManager 持有器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-21
  **/
 public class BeanScopeManagerHolder {

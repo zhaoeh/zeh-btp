@@ -13,7 +13,7 @@ import java.io.IOException;
  * @description: Locale合法性校验过滤器，在过滤器中强制调用LocaleResolver解析locale，然后做合法性校验
  * <p>
  * 为什么非在过滤器中做？因为过滤器是最早被执行的，应该优先校验。如果在AOP中做，请求已经进入到Dispatcher了，校验太延迟。如果在拦截器中做，请求同样进入到Dispatcher了，校验太晚。
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-09
  **/
 public class LocaleCheckFilter extends OncePerRequestFilter {

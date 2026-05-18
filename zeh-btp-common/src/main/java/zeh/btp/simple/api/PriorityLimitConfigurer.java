@@ -2,7 +2,7 @@ package zeh.btp.simple.api;
 
 /**
  * @description: 限流拦截配置器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-01-12
  **/
 public interface PriorityLimitConfigurer {

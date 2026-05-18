@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @description: 类型工具类
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-11
  **/
 public class TypeUtils {

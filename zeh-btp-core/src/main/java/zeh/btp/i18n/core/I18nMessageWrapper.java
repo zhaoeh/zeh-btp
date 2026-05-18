@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * @description: I18nMessageWrapper 国际化包装器，对MessageSource对象进行包装
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-06-21
  **/
 public class I18nMessageWrapper implements MessageSourceAware {

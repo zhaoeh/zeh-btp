@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * @description: 关联校验指定枚举
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-02
  **/
 public class EnumsValidator {

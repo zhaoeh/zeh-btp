@@ -15,7 +15,7 @@ import java.util.Objects;
 
 /**
  * @description: 通用aop拦截逻辑
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-10-20 11:20
  **/
 @Slf4j

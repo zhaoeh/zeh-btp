@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @description: 关联校验指定枚举
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-24
  **/
 public class NotDuplicateValidator implements ConstraintValidator<NotDuplicate, List<?>> {

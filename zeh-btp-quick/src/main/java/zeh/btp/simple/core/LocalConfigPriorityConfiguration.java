@@ -17,7 +17,7 @@ import java.util.Properties;
 
 /**
  * @description: 本地配置文件优先级最高配置
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-20
  */
 public class LocalConfigPriorityConfiguration implements ApplicationContextInitializer, Ordered {

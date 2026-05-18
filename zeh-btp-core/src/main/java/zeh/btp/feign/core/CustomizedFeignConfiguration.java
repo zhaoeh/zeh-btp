@@ -15,7 +15,7 @@ import java.util.Objects;
 
 /**
  * @description: 自定义feign配置，该配置默认实现Feign请求拦截器，用于接入feign将请求发送给服务端之前回调执行一些拦截逻辑
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-10-27 18:29
  */
 @Configuration

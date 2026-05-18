@@ -2,7 +2,7 @@ package zeh.btp.enums;
 
 /**
  * @description: 搜索类型枚举
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-01-05
  **/
 public enum SearchTypeEnum {

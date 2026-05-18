@@ -16,7 +16,7 @@ import java.util.Objects;
 
 /**
  * @description: 对入参对象中标注HtmlEscape的字段且为String类型的，进行html转义，防止xss攻击
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-19
  **/
 @Aspect

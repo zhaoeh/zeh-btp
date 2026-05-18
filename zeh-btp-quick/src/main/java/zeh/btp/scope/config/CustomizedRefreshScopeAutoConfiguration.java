@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @description: bean刷新作用域自动配置
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-20
  **/
 @AutoConfiguration

@@ -4,7 +4,7 @@ import zeh.btp.mfa.show.MfaResult;
 
 /**
  * @description: 响应包装钩子
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-05-30
  **/
 @FunctionalInterface

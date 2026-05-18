@@ -11,7 +11,7 @@ import java.util.Objects;
 
 /**
  * @description: 自定义消息插值器，用于对原始消息进行插值替换，替换值采用messageSource从国际化资源中获取
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-10
  **/
 public class CustomizeMessageInterpolator {

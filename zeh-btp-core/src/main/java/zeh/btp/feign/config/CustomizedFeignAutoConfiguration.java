@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @description: 自定义feign配置自动配置类
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-06
  **/
 @AutoConfiguration

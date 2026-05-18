@@ -4,7 +4,7 @@ import zeh.btp.i18n.info.I18nMessages;
 
 /**
  * @description: 国际化消息供应者
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-05
  **/
 @FunctionalInterface

@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * @description: 通用aop自定配置类
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-06
  **/
 @AutoConfiguration

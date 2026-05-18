@@ -8,7 +8,7 @@ import java.util.Locale;
 
 /**
  * @description: 有效locale供应器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-09
  **/
 @FunctionalInterface

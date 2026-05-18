@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @description: 定时刷新作用域范围缓存对象
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-21
  **/
 @Slf4j

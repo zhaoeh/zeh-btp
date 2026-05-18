@@ -10,7 +10,7 @@ import java.util.function.Function;
  *
  * @program: riskcontrol-api
  * @description:包装Function函数式接口，提供单值和复值的包装方法
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-10-06 11:04
  **/
 

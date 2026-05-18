@@ -6,7 +6,7 @@ import java.lang.annotation.Target;
 
 /**
  * @description: SpEL条件注解，只有当所有条件注解都满足时，才对依赖的表达式执行校验，否则直接放行
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-10-25
  **/
 @Target({})

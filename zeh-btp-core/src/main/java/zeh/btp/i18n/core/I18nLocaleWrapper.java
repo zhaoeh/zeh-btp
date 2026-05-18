@@ -7,7 +7,7 @@ import java.util.Locale;
 
 /**
  * @description: i18n Locale包装器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-06-21
  **/
 public class I18nLocaleWrapper {

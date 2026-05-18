@@ -12,7 +12,7 @@ import java.util.Objects;
 
 /**
  * @description: locale校验器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-09
  **/
 public class LocaleChecker {

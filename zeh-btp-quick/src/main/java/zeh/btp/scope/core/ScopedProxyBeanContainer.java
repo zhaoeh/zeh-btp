@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 /**
  * @description: 所有被scopedProxy代理的bean容器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-22
  **/
 @Slf4j

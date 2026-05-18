@@ -2,7 +2,7 @@ package zeh.btp.validation.annotation.validate;
 
 /**
  * @description: 枚举值校验注解
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-02
  **/
 public @interface EnumValid {

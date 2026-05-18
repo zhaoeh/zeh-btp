@@ -2,7 +2,7 @@ package zeh.btp.i18n.api;
 
 /**
  * @description: i18n 消息转换器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-14
  **/
 public interface I18nMessageConvert {

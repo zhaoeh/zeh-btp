@@ -4,7 +4,7 @@ package zeh.btp.aop;
  * 通用的切面逻辑接口
  *
  * @description: common aspect
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-10-20 16:11
  **/
 

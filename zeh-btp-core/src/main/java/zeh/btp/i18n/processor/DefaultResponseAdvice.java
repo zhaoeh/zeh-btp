@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
  * @description: 默认的http 响应处理器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-08
  **/
 @ControllerAdvice

@@ -2,7 +2,7 @@ package zeh.btp.enums;
 
 /**
  * @description: 风控导入模式枚举
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-24
  **/
 public enum RiskImportModelEnum {

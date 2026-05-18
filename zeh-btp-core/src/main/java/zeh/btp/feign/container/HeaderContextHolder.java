@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  * @description: header上下文持有者，将header上下文转存于当前线程中
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-10-27 18:52
  */
 public class HeaderContextHolder {

@@ -10,7 +10,7 @@ import java.util.*;
 
 /**
  * @description: 国际化消息code查找器，根据message查找
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-14
  **/
 public class I18nConfigFinder {

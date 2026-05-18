@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @program: riskcontrol-common
  * @description:
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-12-01 15:22
  */
 public interface ReturnValueStrategyConfiguration {

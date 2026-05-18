@@ -2,7 +2,7 @@ package zeh.btp.scope.hook;
 
 /**
  * @description: 支持定时刷新的bean scope管理器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-23
  **/
 public interface PeriodRefreshBeanScopeManager extends BeanScopeManager {

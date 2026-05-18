@@ -10,7 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * @description: 基于redis的分布式锁自动配置
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-19
  **/
 @AutoConfiguration

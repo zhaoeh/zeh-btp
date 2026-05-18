@@ -5,7 +5,7 @@ import org.springframework.context.event.ApplicationContextEvent;
 
 /**
  * @description: 自定义事件
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-26
  **/
 public class ScopedProxyBeanTriggerEvent extends ApplicationContextEvent {

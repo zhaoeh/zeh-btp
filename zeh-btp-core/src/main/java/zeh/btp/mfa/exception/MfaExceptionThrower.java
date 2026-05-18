@@ -8,7 +8,7 @@ import java.util.Optional;
 
 /**
  * @description: mfaException抛出器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-05-30
  **/
 public class MfaExceptionThrower {

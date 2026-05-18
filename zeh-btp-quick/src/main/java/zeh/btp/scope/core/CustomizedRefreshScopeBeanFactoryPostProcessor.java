@@ -15,7 +15,7 @@ import java.util.*;
 
 /**
  * @description: BeanScopeManager 配置器收集处理
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-21
  **/
 public class CustomizedRefreshScopeBeanFactoryPostProcessor implements BeanFactoryPostProcessor {

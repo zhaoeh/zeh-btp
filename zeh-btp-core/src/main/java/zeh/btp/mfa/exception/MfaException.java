@@ -4,7 +4,7 @@ import zeh.btp.mfa.enums.MfaErrorEnum;
 
 /**
  * @description: MFA Exception
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-05-16
  **/
 public class MfaException extends RuntimeException {

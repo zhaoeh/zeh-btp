@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  * @description: 针对ResponseBodyAdvice的BeanPostProcessor，由于某些业务侧通过@Bean的方式注册ResponseBodyAdvice，导致条件注解失效（@Bean返回值类型不是父类型）
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-08
  **/
 public class ResponseBodyAdviceBeanPostProcessor implements BeanPostProcessor {

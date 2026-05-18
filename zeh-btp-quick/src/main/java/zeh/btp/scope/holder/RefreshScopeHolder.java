@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  * @description: refresh scope holder
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-29
  **/
 public class RefreshScopeHolder {

@@ -8,7 +8,7 @@ import org.springframework.util.Assert;
 
 /**
  * @description: 默认的bean构建器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-23
  **/
 @AllArgsConstructor

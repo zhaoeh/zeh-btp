@@ -5,7 +5,7 @@ import org.springframework.lang.Nullable;
 
 /**
  * @description: bean作用域管理器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-23
  **/
 public interface BeanScopeManager {

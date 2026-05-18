@@ -3,7 +3,7 @@ package zeh.btp.enums;
 /**
  * @ClassName YesNoEnum
  * @Description 常用枚举
- * @Author Erhu.Zhao
+ * @Author GuanLan.Zhao
  * @Date 2023/10/18 15:42
  * @Version 1.0
  **/

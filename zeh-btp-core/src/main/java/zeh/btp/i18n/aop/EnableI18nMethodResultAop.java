@@ -12,7 +12,7 @@ import java.util.Objects;
 
 /**
  * @description: EnableI18nMethodResult注解拦截器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-07
  **/
 @Aspect

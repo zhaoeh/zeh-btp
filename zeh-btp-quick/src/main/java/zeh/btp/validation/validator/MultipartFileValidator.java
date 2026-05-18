@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 /**
  * @description: 关联校验指定枚举
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-24
  **/
 public class MultipartFileValidator implements ConstraintValidator<MultipartFileValidate, Object> {

@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: 多字段依赖校验
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-02
  **/
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})

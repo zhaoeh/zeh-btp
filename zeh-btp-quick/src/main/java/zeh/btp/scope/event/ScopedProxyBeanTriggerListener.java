@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationListener;
 
 /**
  * @description: scoped proxy代理bean触发器，触发真实bean的创建执行
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-22
  **/
 @Slf4j

@@ -2,7 +2,7 @@ package zeh.btp.scope.constants;
 
 /**
  * @description: 常量类
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-27
  **/
 public class ScopeConstants {

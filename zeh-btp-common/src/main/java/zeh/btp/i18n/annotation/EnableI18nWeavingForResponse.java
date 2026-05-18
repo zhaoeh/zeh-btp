@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: 注解，标识于method上，标识为一个controller method开启国际化织入器，目的是为国际化织入自定义逻辑
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-07-11
  **/
 @Documented

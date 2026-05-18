@@ -9,7 +9,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 /**
  * @description: 自定义 HandlerMethodReturnValueHandler，自定义的返回值处理器实现类，需要注册到spring容器中去
  * 在注册时，需要替换调容器中默认的某个返回值处理器才能生效，否则尽管注册到spring容器去了，在HandlerAdapter中也不会查询到该处理器，因为spring mvc默认查询返回值处理器的策略是固定的*
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-12-01 15:00
  */
 public class CustomizedMethodReturnValueHandler implements HandlerMethodReturnValueHandler {

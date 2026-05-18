@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: 枚举值校验注解
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-24
  **/
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE, ElementType.PARAMETER})

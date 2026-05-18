@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 /**
  * @description: 注解标注位置校验器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-19
  **/
 public class AnnotatedBeanPostProcessor implements BeanPostProcessor {

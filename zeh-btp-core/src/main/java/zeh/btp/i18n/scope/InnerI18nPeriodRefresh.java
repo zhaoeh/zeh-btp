@@ -8,7 +8,7 @@ import java.util.Optional;
 
 /**
  * @description: 国际化过期时间配置类
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-20
  **/
 public class InnerI18nPeriodRefresh implements PeriodRefreshBeanScopeManager {

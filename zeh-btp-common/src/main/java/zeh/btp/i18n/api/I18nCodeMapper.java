@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 /**
  * @description: i18n code查找器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-14
  **/
 @FunctionalInterface

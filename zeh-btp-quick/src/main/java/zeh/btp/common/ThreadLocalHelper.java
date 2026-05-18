@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * @description: Thread local helper
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-03
  **/
 public class ThreadLocalHelper<T> {

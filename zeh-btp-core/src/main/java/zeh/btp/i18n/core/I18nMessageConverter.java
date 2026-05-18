@@ -6,7 +6,7 @@ import org.springframework.util.StringUtils;
 
 /**
  * @description: i18n消息转换器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-15
  **/
 public class I18nMessageConverter implements I18nMessageConvert {

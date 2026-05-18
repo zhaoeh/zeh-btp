@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * @description: html特殊字符转义自动配置
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-19
  **/
 @AutoConfiguration

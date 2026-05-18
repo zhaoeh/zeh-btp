@@ -2,7 +2,7 @@ package zeh.btp.i18n.api;
 
 /**
  * @description: i18n 处理器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-14
  **/
 @FunctionalInterface

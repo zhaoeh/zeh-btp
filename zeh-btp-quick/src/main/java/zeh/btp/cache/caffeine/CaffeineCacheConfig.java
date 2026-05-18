@@ -20,7 +20,7 @@ import java.util.Objects;
  * 使用Caffeine作为本地缓存
  *
  * @description: 本地缓存配置
- * @author: Erhu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2023-10-17 16:45
  **/
 @Configuration

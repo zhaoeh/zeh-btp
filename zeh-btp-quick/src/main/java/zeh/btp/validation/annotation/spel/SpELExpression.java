@@ -6,7 +6,7 @@ import java.lang.annotation.Target;
 
 /**
  * @description: SpEL表达式描述注解
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-10-25
  **/
 @Target({})

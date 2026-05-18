@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: 分布式锁注解
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-19
  **/
 @Documented

@@ -23,7 +23,7 @@ import org.springframework.lang.Nullable;
 
 /**
  * @description: i18n自动配置
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-06-21
  **/
 @AutoConfiguration

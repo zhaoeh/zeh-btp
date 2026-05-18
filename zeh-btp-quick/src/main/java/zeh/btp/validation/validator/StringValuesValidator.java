@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * @description: String字段枚举值校验
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-24
  **/
 public class StringValuesValidator implements ConstraintValidator<StringValuesValid, String> {

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @description: mfa实体类
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-06-04
  **/
 @AllArgsConstructor

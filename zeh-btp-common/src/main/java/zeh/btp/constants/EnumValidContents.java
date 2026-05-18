@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 /**
  * @description: EnumValid 注解的内容容器，仅支持设置Integer和String类型的接收值范围
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-01-03
  **/
 public class EnumValidContents {

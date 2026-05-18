@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: list重复元素校验注解
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-24
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})

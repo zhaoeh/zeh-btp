@@ -7,7 +7,7 @@ import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * @description: mfa核心认证接口
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-05-17
  **/
 public interface MfaProcess {

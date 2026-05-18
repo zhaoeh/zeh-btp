@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @description: API限流切面
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-19
  **/
 @Aspect

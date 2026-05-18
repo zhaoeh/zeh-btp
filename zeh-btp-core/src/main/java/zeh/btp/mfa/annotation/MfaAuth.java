@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: mfa 二次认证注解
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-02-28
  **/
 @Documented

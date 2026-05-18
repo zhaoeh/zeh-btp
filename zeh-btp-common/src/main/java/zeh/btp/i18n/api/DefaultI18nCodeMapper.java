@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * @description: 默认的i18n code映射器实现
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-14
  **/
 public class DefaultI18nCodeMapper implements I18nCodeMapper {

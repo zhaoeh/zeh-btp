@@ -11,7 +11,7 @@ import java.util.Objects;
 
 /**
  * @description: 触发器
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-08-27
  **/
 public class CustomizedRefreshScopeCacheTrigger {

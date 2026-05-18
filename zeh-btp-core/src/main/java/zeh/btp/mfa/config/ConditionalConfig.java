@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 
 /**
  * @description:
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-05-21
  **/
 @Configuration

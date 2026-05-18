@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 
 /**
  * @description: MultipartFileValidate
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-09-25
  **/
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE, ElementType.PARAMETER})

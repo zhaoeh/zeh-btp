@@ -5,7 +5,7 @@ import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * @description: ekyc状态策略枚举
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-10-08
  **/
 public enum EkycStatusStrategy {

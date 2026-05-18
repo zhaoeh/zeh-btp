@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @description: 查询ekyc状态请求体
- * @author: ErHu.Zhao
+ * @author: GuanLan.Zhao
  * @create: 2024-10-07
  **/
 @Builder

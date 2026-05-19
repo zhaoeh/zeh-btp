@@ -1,5 +1,6 @@
 package com.ai.service;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -13,6 +14,7 @@ public class KnowledgeService {
 
     private final VectorStore vectorStore;
 
+    @PostConstruct
     public void init() {
 
         // 构建文档对象，手动构建，模拟两个文档，添加到本地向量库

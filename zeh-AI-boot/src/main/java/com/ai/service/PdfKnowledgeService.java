@@ -1,10 +1,7 @@
 package com.ai.service;
 
-import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
-import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -12,15 +9,13 @@ import org.springframework.util.StreamUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 public class PdfKnowledgeService {
 
-    private final VectorStore vectorStore;
-
-    @PostConstruct
-    public void loadPdf() throws Exception {
+    /** Reader + Transformer 阶段：读取资源并按 token 切片。 */
+    public List<Document> loadResource() throws Exception {
 
         Resource resource =
                 new ClassPathResource("docs/提现规则.txt");
@@ -34,7 +29,10 @@ public class PdfKnowledgeService {
 //
 //        String text = Files.readString(path);
 
-        List<Document> documents = List.of(new Document(text));
+        List<Document> documents = List.of(new Document(
+                "withdraw-rule-resource",
+                text,
+                Map.of("source", "docs/提现规则.txt", "category", "rule")));
 
 
         // TokenTextSplitter(int chunkSize, int minChunkSizeChars, int minChunkLengthToEmbed, int maxNumChunks, boolean keepSeparator)
@@ -49,10 +47,6 @@ public class PdfKnowledgeService {
         //
         TokenTextSplitter splitter = new TokenTextSplitter();
 
-        List<Document> chunks = splitter.apply(documents);
-
-        vectorStore.add(chunks);
-
-        System.out.println("chunk数量：" + chunks.size());
+        return splitter.apply(documents);
     }
 }

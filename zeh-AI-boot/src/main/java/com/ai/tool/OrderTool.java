@@ -1,6 +1,7 @@
 package com.ai.tool;
 
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,7 +20,9 @@ public class OrderTool {
      * @return 响应
      */
     @Tool(description = "根据订单ID查询订单信息")
-    public String getOrder(Long id) {
+    public String getOrder(@ToolParam(description = "大于0的订单ID") Long id) {
+
+        requirePositive(id, "订单ID");
 
         return """
                 订单信息：
@@ -34,7 +37,9 @@ public class OrderTool {
 
 
     @Tool(description = "根据用户ID查询余额")
-    public String getBalance(Long userId) {
+    public String getBalance(@ToolParam(description = "大于0的用户ID") Long userId) {
+
+        requirePositive(userId, "用户ID");
 
         return """
             用户余额：
@@ -42,5 +47,11 @@ public class OrderTool {
             用户ID：%s
             余额：8888
             """.formatted(userId);
+    }
+
+    private void requirePositive(Long value, String fieldName) {
+        if (value == null || value <= 0) {
+            throw new IllegalArgumentException(fieldName + "必须大于0");
+        }
     }
 }

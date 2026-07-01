@@ -1,46 +1,32 @@
 package com.ai.service;
 
-import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 public class KnowledgeService {
 
-    private final VectorStore vectorStore;
+    /** Reader 阶段：只负责把业务知识转换为带元数据的 Document。 */
+    public List<Document> loadBuiltInKnowledge() {
+        return List.of(
 
-    @PostConstruct
-    public void init() {
-
-        // 构建文档对象，手动构建，模拟两个文档，添加到本地向量库
-        List<Document> documents = List.of(
-
-                new Document("""
+                new Document("withdraw-failure", """
                         提现失败原因：
                         
                         1. 银行卡异常
                         2. 风控审核失败
                         3. 账户余额不足
-                        """),
+                        """, Map.of("source", "built-in", "category", "failure")),
 
-                new Document("""
+                new Document("withdraw-arrival", """
                         提现到账时间：
                         
                         正常情况下5分钟到账。
                         高峰期可能延迟30分钟。
-                        """)
+                        """, Map.of("source", "built-in", "category", "arrival"))
         );
-
-        // add方法：将AI文档对象添加到本地向量库，内部流程大致如下：
-        // 1.调 embedding 模型
-        // 2. 文本转 vector
-        // 3. 存入本地向量数据库
-        // 上述3个步骤全部是spring ai帮忙自动实现调度的
-        vectorStore.add(documents);
     }
 }

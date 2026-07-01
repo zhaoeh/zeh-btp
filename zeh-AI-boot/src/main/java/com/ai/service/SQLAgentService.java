@@ -1,5 +1,6 @@
 package com.ai.service;
 
+import com.ai.advisor.AiLifecycleLoggerAdvisor;
 import com.ai.dto.SqlAnalysisResult;
 import com.ai.tool.SqlTools;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,8 @@ public class SQLAgentService {
 
     private final SqlTools sqlTools;
 
+    private final AiLifecycleLoggerAdvisor lifecycleLoggerAdvisor;
+
     /**
      * 分析SQL
      *
@@ -22,6 +25,10 @@ public class SQLAgentService {
      * @return
      */
     public SqlAnalysisResult analyze(String sql) {
+
+        if (sql == null || sql.isBlank() || sql.length() > 10_000) {
+            throw new IllegalArgumentException("SQL不能为空且长度不能超过10000个字符");
+        }
 
         /**
          * chatClient.prompt()
@@ -60,6 +67,7 @@ public class SQLAgentService {
                         %s
                         """.formatted(sql))
                 .tools(sqlTools)
+                .advisors(lifecycleLoggerAdvisor)
                 .call()
                 .entity(SqlAnalysisResult.class);
     }

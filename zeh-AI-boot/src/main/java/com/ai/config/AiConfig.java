@@ -1,6 +1,8 @@
 package com.ai.config;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -19,6 +21,18 @@ public class AiConfig {
     @Bean
     public ChatClient chatClient(ChatClient.Builder builder) {
         return builder.build();
+    }
+
+    /**
+     * 模型接口本身是无状态的。这个 Bean 保存最近 20 条消息，
+     * 再由 MessageChatMemoryAdvisor 在每次请求前后读写。
+     * 生产环境应把默认内存仓库替换成 JDBC/Redis 等持久化实现。
+     */
+    @Bean
+    public ChatMemory chatMemory() {
+        return MessageWindowChatMemory.builder()
+                .maxMessages(20)
+                .build();
     }
 
 

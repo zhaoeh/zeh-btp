@@ -1,9 +1,9 @@
 package com.ai.controller;
 
+import com.ai.advisor.AiLifecycleLoggerAdvisor;
 import com.ai.tool.OrderTool;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,11 +16,11 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/ai")
 public class AiController {
 
-    @Autowired
-    private ChatClient chatClient;
+    private final ChatClient chatClient;
 
-    @Autowired
-    private OrderTool orderTool;
+    private final OrderTool orderTool;
+
+    private final AiLifecycleLoggerAdvisor lifecycleLoggerAdvisor;
 
 
     @PostMapping("/demo")
@@ -31,6 +31,7 @@ public class AiController {
         // call()方法：表示使用客户端录入的提示词进行LLM大语言模型调用
         // content()方法：表示输出LLM大语言模型的推理结果
         return chatClient.prompt(msg)
+                .advisors(lifecycleLoggerAdvisor)
                 .call()
                 .content();
     }
@@ -44,6 +45,7 @@ public class AiController {
     @PostMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> stream(@RequestBody String msg) {
         return chatClient.prompt(msg)
+                .advisors(lifecycleLoggerAdvisor)
                 .stream()
                 .content();
     }
@@ -60,6 +62,7 @@ public class AiController {
         // tools()方法，即允许传入应用册定义的多个tool对象，模型会自动推理，按照推理逻辑去调用相关的tool
         return chatClient.prompt(msg)
                 .tools(orderTool)
+                .advisors(lifecycleLoggerAdvisor)
                 .call()
                 .content();
     }

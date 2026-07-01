@@ -4,6 +4,10 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * SQL Agent 的 Structured Output 目标类型。
+ * Lombok {@link Data} 生成 getter/setter，使 BeanOutputConverter/Jackson 可以完成对象映射。
+ */
 @Data
 public class SqlAnalysisResult {
 

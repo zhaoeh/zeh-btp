@@ -6,11 +6,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 代码内置知识的 DocumentReader 示例。
+ * 只负责构造 Spring AI Document，不负责 Embedding 或写入 VectorStore。
+ */
 @Service
 public class KnowledgeService {
 
-    /** Reader 阶段：只负责把业务知识转换为带元数据的 Document。 */
+    /**
+     * Reader 阶段：把两段提现知识转换为带稳定 ID 和元数据的 Document。
+     * Document 文本用于 Embedding 和最终上下文，metadata 用于过滤、引用和追溯。
+     *
+     * @return 尚未向量化的内置知识文档
+     */
     public List<Document> loadBuiltInKnowledge() {
+        // 显式 ID 使重复入库行为可控；source/category 必须使用向量库普遍支持的简单值类型。
         return List.of(
 
                 new Document("withdraw-failure", """

@@ -16,8 +16,8 @@ public class OrderTool {
     /**
      * 注解@Tool表示将这个api作为一个tool暴露给AI，以供其调用
      *
-     * @param id 入参
-     * @return 响应
+     * @param id 模型根据用户问题抽取的订单 ID
+     * @return 会作为 ToolMessage 回传给模型的订单信息
      */
     @Tool(description = "根据订单ID查询订单信息")
     public String getOrder(@ToolParam(description = "大于0的订单ID") Long id) {
@@ -34,8 +34,13 @@ public class OrderTool {
                 """.formatted(id);
     }
 
-
-
+    /**
+     * 查询用户余额的演示工具。
+     * {@link ToolParam} 的说明会进入工具参数 JSON Schema，帮助模型正确构造调用参数。
+     *
+     * @param userId 模型根据用户问题抽取的用户 ID
+     * @return 会作为 ToolMessage 回传给模型的余额信息
+     */
     @Tool(description = "根据用户ID查询余额")
     public String getBalance(@ToolParam(description = "大于0的用户ID") Long userId) {
 
@@ -49,6 +54,13 @@ public class OrderTool {
             """.formatted(userId);
     }
 
+    /**
+     * 工具边界上的参数校验。模型生成的参数仍属于不可信输入，不能跳过业务校验。
+     *
+     * @param value 待校验 ID
+     * @param fieldName 错误消息使用的业务字段名
+     * @throws IllegalArgumentException ID 为空或非正数
+     */
     private void requirePositive(Long value, String fieldName) {
         if (value == null || value <= 0) {
             throw new IllegalArgumentException(fieldName + "必须大于0");

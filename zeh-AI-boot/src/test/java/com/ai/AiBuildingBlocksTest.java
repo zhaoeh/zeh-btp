@@ -11,8 +11,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+/**
+ * 不依赖 Ollama 的 AI 基础组件单元测试。
+ * 重点验证进入外部模型/业务系统之前可以确定的元数据和工具安全边界。
+ */
 class AiBuildingBlocksTest {
 
+    /** 验证 RAG 文档具备后续过滤、引用和追溯所需的元数据。 */
     @Test
     void knowledgeDocumentsShouldCarryMetadataForFilteringAndCitation() {
         List<Document> documents = new KnowledgeService().loadBuiltInKnowledge();
@@ -25,6 +30,7 @@ class AiBuildingBlocksTest {
                 });
     }
 
+    /** 验证模型生成的非法工具参数会在业务工具入口被拒绝。 */
     @Test
     void toolShouldRejectInvalidIdsBeforeTouchingBusinessSystems() {
         OrderTool orderTool = new OrderTool();
@@ -34,6 +40,7 @@ class AiBuildingBlocksTest {
                 .hasMessageContaining("订单ID");
     }
 
+    /** 验证 SQL 工具接受只读查询，并拒绝写操作和多语句注入。 */
     @Test
     void sqlToolShouldOnlyAcceptReadOnlySingleStatement() {
         SqlTools sqlTools = new SqlTools();
